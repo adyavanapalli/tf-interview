@@ -19,4 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
       # TODO: Complete workflow to run Terraform.
