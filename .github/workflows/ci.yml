@@ -10,6 +10,10 @@ jobs:
       ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
 
+    permissions:
+      id-token: write
+      contents: read
+
     defaults:
       run:
         working-directory: terraform
@@ -21,5 +25,10 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
+      
+      - name: Initialize Terraform
+        run: terraform init
 
-      # TODO: Complete workflow to run Terraform.
+      - name: Terraform Apply
+        run: terraform apply
+
