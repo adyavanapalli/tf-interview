@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  terraform:
+    env:
+      ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.ARM_TENANT_ID }}
+
+    defaults:
+      run:
+        working-directory: terraform
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout
+
+      # TODO: Complete workflow to run Terraform.
